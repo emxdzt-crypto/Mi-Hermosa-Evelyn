@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi nena linda ❤️</title>
+    <style>
+        /* Estilos Base y Fondo */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #fff0f3, #ffccd5);
+            font-family: 'Georgia', serif;
+            color: #c9184a;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Lluvia de corazones */
+        .heart {
+            position: fixed;
+            top: -20px;
+            font-size: 18px;
+            z-index: 1;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        /* Contenedor de la Carta */
+        .carta {
+            background: rgba(255, 255, 255, 0.95);
+            width: 85%;
+            max-width: 450px;
+            margin: 40px auto 20px auto;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(255, 77, 109, 0.2);
+            text-align: left;
+            z-index: 10;
+        }
+
+        h1 { font-size: 1.6rem; text-align: center; margin-top: 0; color: #ff4d6d; }
+        p { line-height: 1.7; font-size: 1.05rem; color: #590d22; margin-bottom: 15px; }
+        .firma { text-align: right; font-weight: bold; font-style: italic; margin-top: 20px; font-size: 1.1rem; }
+
+        /* Carrusel Adaptado para Celular */
+        .carrusel-container {
+            width: 90%;
+            max-width: 350px;
+            position: relative;
+            z-index: 10;
+            margin: 20px 0 100px 0;
+        }
+
+        .slide {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .slide img {
+            width: 100%;
+            height: 400px; 
+            object-fit: cover; /* Mantiene la proporción de tus fotos */
+            border-radius: 20px;
+            border: 5px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .te-amo {
+            text-align: center;
+            font-size: 1.3rem;
+            margin: 15px 0;
+            font-weight: bold;
+            color: #ff4d6d;
+        }
+
+        /* Botones de Navegación */
+        .controles {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .btn-nav {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+            cursor: pointer;
+        }
+
+        /* Botón de Música Flotante */
+        .music-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 100;
+            font-size: 26px;
+            background: #ff758f;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 3px solid white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-btn" id="btnMusica" onclick="toggleMusica()">🎵</div>
+    <audio id="miMusica" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <section class="carta">
+        <h1>Para mi dulce Fishy ❤️</h1>
+        
+        <p>Hay muchas cosas que amo de ti, pero la más bonita es tu forma de amarme tan intensamente. Si te soy sincero, me desespero al no poder regresarte todo el amor que me das.</p>
+        
+        <p>Cada vez que te observo, veo en ti a mi dulce Fishy, mi niña tan hermosa; quién diría que después de un tiempo estaríamos así.</p>
+        
+        <p>Me encanta nuestra historia porque, pese a que soñamos y vemos el futuro, nuestro presente nos permite llegar hacia él pasito a pasito; a veces uno se adelanta o el otro se cansa, pero siempre seguimos juntos.</p>
+        
+        <p>Te amo con toda mi vida, corazoncito; quiero que seas muy feliz. Este 14 de febrero es nuestro primer San Valentín juntos, aunque realmente todos los días agradezco a Dios por permitirme estar contigo.</p>
+        
+        <p>Aunque hoy no pueda estar presente con los regalos, flores y música que me encantaría darte, estoy aquí con un corazón que te ama infinitamente.</p>
+        
+        <p>Te amo, mi nena linda, mi Evelyn. :3</p>
+        
+        <div class="firma">Att. Tu Marmotita</div>
+    </section>
+
+    <div class="carrusel-container">
+        <div class="slide">
+            <img src="fotos/foto1.jpeg">
+            <p class="te-amo">Te amo ❤️</p>
+        </div>
+        <div class="slide">
+            <img src="fotos/foto2.jpeg">
+            <p class="te-amo">Te amo ❤️</p>
+        </div>
+        <div class="slide">
+            <img src="fotos/foto3.jpeg">
+            <p class="te-amo">Te amo ❤️</p>
+        </div>
+
+        <div class="controles">
+            <button class="btn-nav" onclick="cambiarFoto(-1)">Anterior</button>
+            <button class="btn-nav" onclick="cambiarFoto(1)">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Lógica del Carrusel ---
+        let indice = 0;
+        const fotos = document.getElementsByClassName("slide");
+
+        function mostrar(n) {
+            if (n >= fotos.length) indice = 0;
+            if (n < 0) indice = fotos.length - 1;
+            for (let i = 0; i < fotos.length; i++) {
+                fotos[i].style.display = "none";
+            }
+            fotos[indice].style.display = "block";
+        }
+
+        function cambiarFoto(n) {
+            mostrar(indice += n);
+        }
+
+        // Iniciar carrusel
+        mostrar(indice);
+
+        // --- Lógica de la Música ---
+        const cancion = document.getElementById("miMusica");
+        const btnM = document.getElementById("btnMusica");
+
+        function toggleMusica() {
+            if (cancion.paused) {
+                cancion.play();
+                btnM.innerText = "⏸️";
+            } else {
+                cancion.pause();
+                btnM.innerText = "🎵";
+            }
+        }
+
+        // --- Lluvia de Corazones ---
+        function crearCorazon() {
+            if (document.getElementsByClassName('heart').length > 15) return;
+            const h = document.createElement('div');
+            h.classList.add('heart');
+            h.innerHTML = "❤️";
+            h.style.left = Math.random() * 95 + "vw";
+            h.style.animationDuration = Math.random() * 3 + 3 + "s";
+            h.style.opacity = Math.random() * 0.5 + 0.5;
+            document.body.appendChild(h);
+
+            setTimeout(() => h.remove(), 5000);
+        }
+
+        setInterval(crearCorazon, 400);
+    </script>
+</body>
+</html>
